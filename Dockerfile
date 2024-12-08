@@ -4,12 +4,12 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build --prod
+RUN npm run build
 
 # Stage 2: Serve Angular App
 FROM nginx:alpine
 COPY --from=builder /app/dist/vehicle-evaluator/browser /usr/share/nginx/html
-EXPOSE 8090
+EXPOSE 80
 
 COPY nginx.conf /usr/share/nginx/nginx.conf
  
