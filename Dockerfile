@@ -10,4 +10,17 @@ RUN npm run build --prod
 FROM nginx:alpine
 COPY --from=builder /app/dist/vehicle-evaluator/browser /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+COPY nginx.conf /usr/share/nginx/nginx.conf
+ 
+# Working Directory
+WORKDIR /usr/share/nginx/html
+# WORKDIR /etc/nginx/html/
+# CMD ["nginx", "-g", "daemon off;"]
+
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ 
+# Health Check
+HEALTHCHECK CMD curl -f http://localhost:80/health || exit 1
+ 
