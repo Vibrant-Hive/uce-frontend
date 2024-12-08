@@ -8,6 +8,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   getAllCars() {
-    return this.http.get('http://user-registration-container-80-tcp.avengers:8081/cars/TESTTEST');
+    return this.http.get('http://used-car-evaluation-service-alb-541600540.ap-south-1.elb.amazonaws.com/cars/TESTTEST');
   }
 }
