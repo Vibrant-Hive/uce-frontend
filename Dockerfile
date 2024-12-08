@@ -9,7 +9,7 @@ RUN npm run build --prod
 # Stage 2: Serve Angular App
 FROM nginx:alpine
 COPY --from=builder /app/dist/vehicle-evaluator/browser /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8090
 
 COPY nginx.conf /usr/share/nginx/nginx.conf
  
