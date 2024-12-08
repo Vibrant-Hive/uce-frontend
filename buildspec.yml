@@ -1,0 +1,32 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - AWS_ACCOUNT_ID=302263063261
+      - REPOSITORY_NAME=avengers/uce-frontend
+      - CODEBUILD_RESOLVED_SOURCE_VERSION=latest
+      - echo Installing dependencies
+      - npm install -g @angular/cli
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+  build:
+    commands:
+      - echo Building Angular app
+      - npm install
+      - npm run build --prod
+      - echo Building Docker image
+      - docker build -t $REPOSITORY_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION .
+      - docker tag $REPOSITORY_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPOSITORY_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
+  post_build:
+    commands:
+      - echo Pushing Docker image to ECR
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPOSITORY_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - echo Writing image definition file
+      - printf '[{"name":"%s","imageUri":"%s"}]' $REPOSITORY_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$REPOSITORY_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION > imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json
