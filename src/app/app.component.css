@@ -1,0 +1,35 @@
+/* Ensure the page takes full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height for viewport */
+  }
+  
+  .app-header {
+    background-color: #1976d2;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .app-main {
+    flex: 1; /* Pushes the footer to the bottom */
+    padding: 5px;
+    background-color: #f4f4f9;
+  }
+  
+  .app-footer {
+    background-color: #1976d2;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+  

@@ -1,0 +1,60 @@
+.header-wrapper {
+    background: linear-gradient(90deg, #c3dff9, #1976d2); /* Gradient background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center; /* Align logo and menu vertically */
+    justify-content: space-between; /* Space between logo and menu */
+  }
+  
+  .logo-row {
+    flex: 0 0 auto; /* Fix the logo size */
+  }
+  
+  .logo-image {
+    height: 100px; /* Adjust logo height */
+    object-fit: contain; /* Ensures logo scales correctly */
+    border-radius: 50%;
+  }
+  
+  .menu-row {
+    flex: 1; /* Menu takes up remaining space */
+  }
+  
+  p-menubar {
+    width: 100%;
+    display: flex; /* Ensures proper alignment with Flexbox */
+    justify-content: flex-end; /* Align menu to the right */
+  }
+  
+  .menu-row {
+    display: flex;
+    gap: 15px; /* Space between menu buttons */
+    align-items: center;
+  }
+  
+  .menu-button {
+    background-color: #ffffff; /* White background */
+    color: #1976d2; /* Theme color for text */
+    border: 2px solid #1976d2; /* Border matches theme color */
+    border-radius: 20px; /* Rounded corners */
+    font-size: 1rem; /* Slightly larger font */
+    padding: 5px 20px; /* Add padding for a button-like look */
+    transition: all 0.3s ease; /* Smooth transition effects */
+  }
+  
+  .menu-button:hover {
+    background-color: #1976d2; /* Invert colors on hover */
+    color: #ffffff; /* White text */
+    cursor: pointer; /* Change cursor to pointer */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+  }
+  
+
+  :host ::ng-deep .p-menubar{
+    background-color: #1e88e5; /* Invert colors on hover */
+
+  }

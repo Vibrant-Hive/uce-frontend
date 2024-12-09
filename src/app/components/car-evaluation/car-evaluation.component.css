@@ -1,4 +1,97 @@
-.container {
-    margin: 20px auto;
-    max-width: 1200px;
-  }
+.evaluation-container {
+  font-family: 'Arial', sans-serif;
+  width: fit-content;
+  padding: 10px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.evaluation-header {
+  text-align: center;
+}
+
+.evaluation-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #04396d;
+  margin-bottom: 5px;
+}
+
+.evaluation-header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.evaluation-main-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between table and flowchart */
+}
+
+.evaluation-table-container {
+  flex: 1; /* Takes up available space */
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.evaluation-table {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.evaluation-table th {
+  background: linear-gradient(90deg, #58a3ea, #1976d2); /* Gradient background */
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.evaluation-table td {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.sale-badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+}
+
+.sale-yes {
+  background-color: #28a745; /* Green for "Yes" */
+}
+
+.sale-no {
+  background-color: #dc3545; /* Red for "No" */
+}
+
+.metadata {
+  margin-top: 20px;
+}
+
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-box {
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.arrow {
+  font-size: 30px;
+  margin: 10px 0;
+}

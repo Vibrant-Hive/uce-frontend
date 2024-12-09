@@ -1,0 +1,31 @@
+.footer-content {
+    background: linear-gradient(90deg, #1976d2, #c3dff9); /* Gradient background */
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for a "floating" effect */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .footer-links {
+    margin-bottom: 8px;
+  }
+  
+  .footer-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: #ffcc00; /* Highlight on hover */
+  }
+  
+  .footer-content p {
+    margin: 5px 0 0;
+    font-size: 0.85rem;
+  }
+  
