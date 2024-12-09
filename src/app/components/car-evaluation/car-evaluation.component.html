@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Car Evaluation Dashboard</h1>
+
+    <p-table [value]="cars()" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]"
+        [responsiveLayout]="'scroll'" [tableStyle]="{'min-width': '75rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>VIN</th>
+                <th>For Sale</th>
+                <th>IoT Score</th>
+                <th>Purchase Recommendation</th>
+                <th>Engine Health</th>
+                <th>Mileage (km)</th>
+                <th>Battery Status (%)</th>
+                <th>Tire Condition (%)</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>{{ car.vin }}</td>
+                <td>{{ car.forSale ? 'Yes' : 'No' }}</td>
+                <td>{{ car.iotScore }}</td>
+                <td>{{ car.purchaseRecommendation }}</td>
+                <td>{{ car.iotMetrics.engineHealth }}</td>
+                <td>{{ car.iotMetrics.mileage }}</td>
+                <td>{{ car.iotMetrics.batteryStatus }}</td>
+                <td>{{ car.iotMetrics.tireCondition }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <!-- <div *ngIf="!cars().length">
+        <p>Loading cars...</p>
+    </div> -->
+</div>

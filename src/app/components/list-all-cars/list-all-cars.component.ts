@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationService } from '../services/registration.service';
+import { RegistrationService } from '../../services/registration.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
