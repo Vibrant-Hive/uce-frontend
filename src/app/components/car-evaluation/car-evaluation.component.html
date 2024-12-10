@@ -5,21 +5,26 @@
         <div style="font-size: 2rem; color: #04396d; font-weight: bold;">Dashboard</div>
         <p>Get insights into car health and purchase recommendations.</p>
       </div>
-      <p-table [value]="cars()" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]"
+      <p-table [value]="cars()"
         [responsiveLayout]="'scroll'" [tableStyle]="{'min-width': '75rem'}" class="evaluation-table">
         <ng-template pTemplate="header">
           <tr>
-            <th pTooltip="Source: Car Registration Service" tooltipPosition="top">VIN</th>
-              <th pTooltip="Source: Car Registration Service" tooltipPosition="top">For Sale</th>
-              <th pTooltip="Source: Car Registration Service" tooltipPosition="top" [autoHide]="false">Quoted Price</th>
+            <th pTooltip="Car Registration Service" tooltipPosition="top">VIN</th>
+              <th pTooltip="Car Registration Service" tooltipPosition="top">For Sale</th>
+              <th pTooltip="Car Registration Service" tooltipPosition="top" [autoHide]="false">Quoted Price</th>
               
-              <th pTooltip="Source: IoT Service" tooltipPosition="top">Engine Health</th>
-              <th pTooltip="Source: IoT Service" tooltipPosition="top">Mileage (km)</th>
-              <th pTooltip="Source: IoT Service" tooltipPosition="top">Battery Status (%)</th>
-              <th pTooltip="Source: IoT Service" tooltipPosition="top">Tire Condition (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Engine Health</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Mileage (km)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Battery Status (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Tire Condition (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Brake Health (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Suspension Health (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Air Conditioner Health (%)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Fuel Efficiency (kmpl)</th>
+              <th pTooltip="IoT Service" tooltipPosition="top">Transmission Health (%)</th>
 
-              <th pTooltip="Source: Used Car Evaluation Service" tooltipPosition="top">Evaluated Price</th>
-              <th pTooltip="Source: Used Car Evaluation Service" tooltipPosition="top">Recommendation</th>
+              <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Evaluated Price</th>
+              <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Recommendation</th>
           </tr>
         </ng-template>
 
@@ -36,8 +41,13 @@
             <td>{{ car.wearAndTearData.mileage }}</td>
             <td>{{ car.wearAndTearData.batteryStatus }}</td>
             <td>{{ car.wearAndTearData.tireCondition }}</td>
+            <td>{{ car.wearAndTearData.brakeHealth }}</td>
+            <td>{{ car.wearAndTearData.suspensionHealth }}</td>
+            <td>{{ car.wearAndTearData.airConditionerHealth }}</td>
+            <td>{{ car.wearAndTearData.fuelEfficiency }}</td>
+            <td>{{ car.wearAndTearData.transmissionHealth }}</td>
             <td>{{ car.recommendedPrice }}</td>
-            <td>{{ car.message }}</td>
+            <td [ngClass]="{'eval-warn': car.message?.includes('Good'), 'eval-yes': car.message?.includes('Excellent'), 'eval-no': car.message?.includes('Poor')}">{{ car.message }}</td>
           </tr>
         </ng-template>
       </p-table>
@@ -50,18 +60,20 @@
           <li><strong>Evaluated Price, Recommendation:</strong> Used Car Evaluation Service</li>
         </ul>
       </div> -->
+
+      <div class="flow-container">
+        <div class="service-box">Frontend (Angular App)</div>
+        <div class="arrow">➟</div>
+        <div class="service-box">Used Car Evaluation Service</div>
+        <div class="arrow">➟</div>
+        <div class="service-box">Car Registration Service</div>
+        <div class="arrow">➟</div>
+        <div class="service-box">IoT Service</div>
+        <div class="arrow">➟</div>
+        <div class="service-box">Response to Frontend</div>
+      </div>
     </div>
 
-    <div class="flow-container">
-      <div class="service-box">Frontend (Angular App)</div>
-      <div class="arrow">↓</div>
-      <div class="service-box">Used Car Evaluation Service</div>
-      <div class="arrow">↓</div>
-      <div class="service-box">Car Registration Service</div>
-      <div class="arrow">↓</div>
-      <div class="service-box">IoT Service</div>
-      <div class="arrow">↓</div>
-      <div class="service-box">Response to Frontend</div>
-    </div>
+    
   </div>
 </div>

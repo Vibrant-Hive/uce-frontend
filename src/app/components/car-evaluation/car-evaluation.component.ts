@@ -25,7 +25,7 @@ export class CarEvaluationComponent implements OnInit {
   // Load all cars with evaluation data
   loadAllCars() {
     this.evaluationService.getAllCars().subscribe(
-      (data) => this.cars.set(data.concat(data)),
+      (data) => this.cars.set(data),
       (error) => console.error('Error fetching data:', error)
     );
   }

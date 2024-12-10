@@ -73,25 +73,47 @@
   background-color: #dc3545; /* Red for "No" */
 }
 
+.sale-warn {
+  background-color: #d0ba2d; /* Red for "No" */
+}
+
+.eval-yes {
+  color: #28a745; /* Green for "Yes" */
+  font-weight: bold;
+}
+
+.eval-no {
+  color: #dc3545; /* Red for "No" */
+  font-weight: bold;
+}
+
+.eval-warn {
+  color: #d0ba2d; /* Red for "No" */
+  font-weight: bold;
+}
+
 .metadata {
   margin-top: 20px;
 }
 
 .flow-container {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
 }
 
 .service-box {
   padding: 10px;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   border-radius: 8px;
   margin: 5px 0;
 }
 
 .arrow {
-  font-size: 30px;
+  font-size: 50px;
   margin: 10px 0;
 }
