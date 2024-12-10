@@ -66,11 +66,11 @@
 }
 
 .sale-yes {
-  background-color: #28a745; /* Green for "Yes" */
+  background-color: #74b784; /* Green for "Yes" */
 }
 
 .sale-no {
-  background-color: #dc3545; /* Red for "No" */
+  background-color: #bf5d67; /* Red for "No" */
 }
 
 .sale-warn {
@@ -98,7 +98,7 @@
 
 .flow-container {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 1rem;
@@ -108,12 +108,19 @@
 
 .service-box {
   padding: 10px;
-  /* background-color: #f2f2f2; */
+  background-color: #c3dff9;
   border-radius: 8px;
   margin: 5px 0;
+  font-size: small;
 }
 
 .arrow {
-  font-size: 50px;
+  font-size: 20px;
   margin: 10px 0;
+  color: #1976d2;
+}
+
+
+:host ::ng-deep .p-element, td {
+  font-size: small !important;
 }

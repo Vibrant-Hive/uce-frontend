@@ -15,8 +15,12 @@ import { TooltipModule } from 'primeng/tooltip';
 })
 export class CarEvaluationComponent implements OnInit {
   cars = signal<any[]>([]);
+  iotServiceUp: any;
+  carRegServiceUp: any;
+  uceServiceUp: any;
+  loaded: any = false;
 
-  constructor(private evaluationService: EvaluationService) {}
+  constructor(private evaluationService: EvaluationService) { }
 
   ngOnInit(): void {
     this.loadAllCars();
@@ -25,8 +29,8 @@ export class CarEvaluationComponent implements OnInit {
   // Load all cars with evaluation data
   loadAllCars() {
     this.evaluationService.getAllCars().subscribe(
-      (data) => this.cars.set(data),
-      (error) => console.error('Error fetching data:', error)
+      (data) => { this.cars.set(data); this.uceServiceUp = true; this.iotServiceUp = data.some(item => item.wearAndTearData); this.loaded = true; this.carRegServiceUp = data.length > 0 },
+      (error) => { console.error('Error fetching data:', error); this.loaded = true; this.uceServiceUp = false }
     );
   }
 

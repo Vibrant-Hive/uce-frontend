@@ -2,29 +2,29 @@
   <div class="evaluation-main-content">
     <div class="evaluation-table-container">
       <div class="evaluation-header">
-        <div style="font-size: 2rem; color: #04396d; font-weight: bold;">Dashboard</div>
+        <div style="font-size: 1.5rem; color: #04396d; font-weight: bold;">Dashboard</div>
         <p>Get insights into car health and purchase recommendations.</p>
       </div>
-      <p-table [value]="cars()"
+      <p-table [value]="cars()" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]"
         [responsiveLayout]="'scroll'" [tableStyle]="{'min-width': '75rem'}" class="evaluation-table">
         <ng-template pTemplate="header">
           <tr>
             <th pTooltip="Car Registration Service" tooltipPosition="top">VIN</th>
-              <th pTooltip="Car Registration Service" tooltipPosition="top">For Sale</th>
-              <th pTooltip="Car Registration Service" tooltipPosition="top" [autoHide]="false">Quoted Price</th>
-              
-              <th pTooltip="IoT Service" tooltipPosition="top">Engine Health</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Mileage (km)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Battery Status (%)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Tire Condition (%)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Brake Health (%)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Suspension Health (%)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Air Conditioner Health (%)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Fuel Efficiency (kmpl)</th>
-              <th pTooltip="IoT Service" tooltipPosition="top">Transmission Health (%)</th>
+            <th pTooltip="Car Registration Service" tooltipPosition="top">Sale</th>
+            <th pTooltip="Car Registration Service" tooltipPosition="top" [autoHide]="false">Price</th>
 
-              <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Evaluated Price</th>
-              <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Recommendation</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Engine</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Mileage</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Battery</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Tyre</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Brake</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Suspension</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">AC</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">FE</th>
+            <th pTooltip="IoT Service" tooltipPosition="top">Transmission</th>
+
+            <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Evaluated_Price</th>
+            <th pTooltip="Used Car Evaluation Service" tooltipPosition="top">Remark</th>
           </tr>
         </ng-template>
 
@@ -36,44 +36,70 @@
                 {{ car.car.isForSale ? 'Yes' : 'No' }}
               </span>
             </td>
-            <td>{{ car.car.price }}</td>
-            <td>{{ car.wearAndTearData.engineHealth }}</td>
-            <td>{{ car.wearAndTearData.mileage }}</td>
-            <td>{{ car.wearAndTearData.batteryStatus }}</td>
-            <td>{{ car.wearAndTearData.tireCondition }}</td>
-            <td>{{ car.wearAndTearData.brakeHealth }}</td>
-            <td>{{ car.wearAndTearData.suspensionHealth }}</td>
-            <td>{{ car.wearAndTearData.airConditionerHealth }}</td>
-            <td>{{ car.wearAndTearData.fuelEfficiency }}</td>
-            <td>{{ car.wearAndTearData.transmissionHealth }}</td>
-            <td>{{ car.recommendedPrice }}</td>
-            <td [ngClass]="{'eval-warn': car.message?.includes('Good'), 'eval-yes': car.message?.includes('Excellent'), 'eval-no': car.message?.includes('Poor')}">{{ car.message }}</td>
+            <td>{{ car.car.price ? '$' + car.car.price : '-' }}</td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.engineHealth ?
+              car.wearAndTearData?.engineHealth : '-' }}<span *ngIf="car.wearAndTearData?.engineHealth"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.mileage ?
+              car.wearAndTearData?.mileage : '-' }}<span *ngIf="car.wearAndTearData?.mileage"
+                style="font-size: x-small;">km</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.batteryStatus ?
+              car.wearAndTearData?.batteryStatus : '-' }}<span *ngIf="car.wearAndTearData?.batteryStatus"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.tireCondition ?
+              car.wearAndTearData?.tireCondition : '-' }}<span *ngIf="car.wearAndTearData?.tireCondition"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.brakeHealth ?
+              car.wearAndTearData?.brakeHealth : '-' }}<span *ngIf="car.wearAndTearData?.brakeHealth"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.suspensionHealth ?
+              car.wearAndTearData?.suspensionHealth : '-' }}<span *ngIf="car.wearAndTearData?.suspensionHealth"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.airConditionerHealth ?
+              car.wearAndTearData?.airConditionerHealth : '-' }}<span *ngIf="car.wearAndTearData?.airConditionerHealth"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.fuelEfficiency ?
+              car.wearAndTearData?.fuelEfficiency : '-' }}<span *ngIf="car.wearAndTearData?.fuelEfficiency"
+                style="font-size: x-small;">kmpl</span></td>
+            <td style="background-color: rgba(255, 217, 0, 0.236);">{{ car.wearAndTearData?.transmissionHealth ?
+              car.wearAndTearData?.transmissionHealth : '-' }}<span *ngIf="car.wearAndTearData?.transmissionHealth"
+                style="font-size: x-small;">%</span></td>
+            <td style="background-color: rgba(192, 192, 192, 0.244)">{{ car.recommendedPrice ? '$' +
+              car.recommendedPrice : '-' }}</td>
+            <td
+              [ngClass]="{'eval-warn': car.message?.includes('Good'), 'eval-yes': car.message?.includes('Excellent'), 'eval-no': car.message?.includes('Poor')}">
+              {{ car.message }}</td>
           </tr>
         </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="14" class="text-center" *ngIf="loaded">No cars available to display.</td>
+              <td colspan="14" class="text-center" *ngIf="!loaded">Loading cars...</td>
+          </tr>
+      </ng-template>
       </p-table>
 
-      <!-- <div class="metadata">
-        <p><strong>Column Data Sources:</strong></p>
-        <ul>
-          <li><strong>VIN, For Sale, Quoted Price:</strong> Car Registration Service</li>
-          <li><strong>Engine Health, Mileage, Battery Status, Tire Condition:</strong> IoT Service</li>
-          <li><strong>Evaluated Price, Recommendation:</strong> Used Car Evaluation Service</li>
-        </ul>
-      </div> -->
-
-      <div class="flow-container">
-        <div class="service-box">Frontend (Angular App)</div>
-        <div class="arrow">➟</div>
-        <div class="service-box">Used Car Evaluation Service</div>
-        <div class="arrow">➟</div>
-        <div class="service-box">Car Registration Service</div>
-        <div class="arrow">➟</div>
-        <div class="service-box">IoT Service</div>
-        <div class="arrow">➟</div>
-        <div class="service-box">Response to Frontend</div>
+    </div>
+    <div class="flow-container">
+      <div class="service-box" style="background-color: #dde6ef; font-size: small;">Frontend (Angular App)</div>
+      <div class="arrow">⇣</div>
+      <div style="border: 2px dotted #1976d2; padding: 2px; border-radius: 2%;">
+        <div class="service-box">Used Car Evaluation Service <br><img *ngIf=" loaded && uceServiceUp" alt=""
+            src="assets/check.png" height="21"><img *ngIf=" loaded && !uceServiceUp" alt="" src="assets/cancel.png"
+            height="21"></div>
+        <div class="arrow">⇣</div>
+        <div class="service-box">Car Registration Service <br><img *ngIf=" loaded && carRegServiceUp" alt=""
+            src="assets/check.png" height="21"><img *ngIf=" loaded && !carRegServiceUp" alt="" src="assets/cancel.png"
+            height="21"></div>
+        <div class="arrow">⇣</div>
+        <div class="service-box">IoT Service <br><img *ngIf=" loaded && iotServiceUp" alt="" src="assets/check.png"
+            height="21"><img *ngIf=" loaded && !iotServiceUp" alt="" src="assets/cancel.png" height="21"></div>
       </div>
+      <div class="arrow">⇣</div>
+
+      <div class="service-box" style="background-color: #dde6ef;">Response to Frontend</div>
     </div>
 
-    
   </div>
 </div>
